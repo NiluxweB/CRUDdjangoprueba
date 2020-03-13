@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD con Django</title>
+</head>
+<body>
+    <h1>CRUD con Django</h1>
+    <h2>Ingresar personas</h2>
+    <div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <label for="">Nombre</label>
+            <input type="text" name="nombre" id="nombre"><br>
+            <label for="">Apellido</label>
+            <input type="text" name="apellido" id="apellido"><br>
+            <label for="">Dirección</label>
+            <input type="text" name="direccion" id="direccion"><br>
+            <label for="">Teléfono</label>
+            <input type="text" name="telefono" id="telefono"><br>
+            <label for="">Fecha de Nacimiento</label>
+            <input type="date" name="fecha_nacimiento" id="fecha_nacimiento"><br>
+            <label for="">Genero</label>
+            <select name="genero" id="genero">
+                <option value="">-- Seleccione --</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+            </select><br>
+            <button type="submit">Guardar</button>
+        </form>
+    </div>
+
+    <h2>Listar Personas</h2>
+
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Genero</th>
+        </tr>
+        {% for p in persona %}
+        <tr>
+            <td>{{ p.nombre }}</td>
+            <td>{{ p.apellido }}</td>
+            <td>{{ p.direccion }}</td>
+            <td>{{ p.telefono }}</td>
+            <td>{{ p.fecha_nacimiento }}</td>
+            <td>{{ p.genero }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
