@@ -17,13 +17,14 @@ def listarpersona(request):
 
 def agregarpersona(request):
     if request.POST:
+        persona = Persona()
         nombre = request.POST.get("nombre")
         apellido = request.POST.get("apellido")
         direccion = request.POST.get("direccion")
         telefono = request.POST.get("telefono")
         fecha_nacimiento = request.POST.get("fecha_nacimiento")
         genero = request.POST.get("genero")
-        form = agregarpersona(nombre=nombre, apellido=apellido, direccion=direccion, telefono=telefono, fecha_nacimiento=fecha_nacimiento, genero=genero)
-        form.save()
+        persona = Persona(nombre=nombre, apellido=apellido, direccion=direccion, telefono=telefono, fecha_nacimiento=fecha_nacimiento, genero=genero)
+        persona.save()
 
     return render(request, 'core/index.html')
